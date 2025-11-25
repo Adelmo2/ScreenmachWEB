@@ -1,6 +1,7 @@
 package br.com.alura.screenmatch.model;
 
 import br.com.alura.screenmatch.service.traducao.ConsultaMyMemory;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -33,6 +34,7 @@ public class Serie {
 
     //Essa anotação isola a lista para permitir a classe serie prosseguir com o objetivo de salvar.
     //@Transient
+    //@JsonIgnore -- usar essa anotação somente quando tem algumas funções em chamada recursiva. (uma classe a  que chama a classe b e que chama a classe a)
     @OneToMany(mappedBy = "serie", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Episodio> episodios = new ArrayList<>();
 
